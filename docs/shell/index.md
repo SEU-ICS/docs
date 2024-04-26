@@ -18,6 +18,8 @@ Start by downloading the lab repository to your preferred directory in which you
 
 Look at the `tsh.c` (*tiny shell*) file, you will see that it contains a functional skeleton of a simple Unix shell. To help you get started, we have already implemented the less interesting functions. Your assignment is to complete the remaining empty functions listed in Table 1. Note that for our reference implementation, each function can be completed within 80 lines of code (LoC), some within 30 LoC.
 
+<center>**Table 1. Shell Lab Functions to be Implemented**</center>
+
 | Function Name | Description |
 | --- | --- |
 |`eval` | 	Main routine that parses and interprets the command line |
@@ -27,7 +29,6 @@ Look at the `tsh.c` (*tiny shell*) file, you will see that it contains a functio
 |`sigchld_handler` | 	Catches SIGCHILD signals |
 |`sigtstp_handler` | 	Catches SIGINT (ctrl-c) signals |
 |`sigint_handler` | 	Catches SIGTSTP (ctrl-z) signals |
-> Table 1. Shell Lab Functions to be Implemented
 
 Each time you modify your `tsh.c` file, type `make` to recompile it. To run your shell, type `./tsh` to the command line:
 ```shell
