@@ -1,0 +1,7 @@
+site_name: ICS Lab Guidance
+
+nav:
+  - Home: index.md
+  - ShellLab: shell/index.md
+
+theme: material
