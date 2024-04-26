@@ -10,7 +10,8 @@ The purpose of this lab is to become more familiar with the concepts of process 
 * You will need a Linux distribution to finish this lab and the lab environment for your previous labs will do.
 
 ### Basic Instructions
-Start by downloading the lab repository to your preferred directory in which you plan to do your work. You can either download the repo on the web page, or clone it using `git clone`. Then do the following:
+Start by downloading the lab repository to your preferred directory in which you plan to do your work. You can either download the repo on the web page, or clone it using `git clone https://github.com/SEU-ICS/lab`. Then do the following:
+
 * Expand/Decompress the repo if it is downloaded.
 * Change the working directory to `lab/shell`
 * Execute `make` to compile and link some test routines.
@@ -82,14 +83,16 @@ tsh> /bin/ls -l -d &
 
 runs the `ls` program in the background. 
 
-Unix shells support the notion of *job control*, which allows users to move jobs back and forth between background and foreground, and to change the process state (running, stopped, or terminated) of the processes in a job. Typing `ctrl-c` causes a `SIGINT` signal to be delivered to each process in the foreground job. The default action for `SIGINT` is to terminate the process. Similarly, typing `ctrl-z` causes a `SIGTSTP` signal to be delivered to each process in the foreground job. The default action for `SIGTSTP` is to place a process in the stopped state, where it remains until it is awakened by the receipt of a `SIGCONT` signal. Unix shells also provide various built-in commands that support job control. For example: 
+Unix shells support the notion of *job control*, which allows users to move jobs back and forth between background and foreground, and to change the process state (running, stopped, or terminated) of the processes in a job. Typing `ctrl-c` causes a `SIGINT` signal to be delivered to each process in the foreground job. The default action for `SIGINT` is to terminate the process. Similarly, typing `ctrl-z` causes a `SIGTSTP` signal to be delivered to each process in the foreground job. The default action for `SIGTSTP` is to place a process in the stopped state, where it remains until it is awakened by the receipt of a `SIGCONT` signal. Unix shells also provide various built-in commands that support job control. For example:
+
 * `jobs`: List the running and stopped background jobs. 
 * `bg <job>`: Change a stopped background job to a running background job. 
 * `fg <job>`: Change a stopped or running background job to a running in the foreground. 
 * `kill <job>`: Terminate a job.
 
 ## The `tsh` Specification
-Your `tsh` shell should have the following features: 
+Your `tsh` shell should have the following features:
+
 * The prompt should be the string `tsh> `.
 * The command line typed by the user should consist of a `<name>` and zero or more arguments, all separated by one or more spaces. If `<name>` is a built-in command, then `tsh` should handle it immediately and wait for the next command line. Otherwise, `tsh` should assume that `<name>` is the path of an executable file, which it loads and runs in the context of an initial child process (In this context, the term job refers to this initial child process).
 * `tsh` does not need to support pipes (|) or I/O redirection (< and >). 
@@ -235,7 +238,8 @@ test case 16 passed
 
 Each test count for **5** points, and you will get total **80** points if all tests pass. If you don’t see something like `test case <idx> passed` in the outputs, your shell does not pass the corresponding test case. Under this case, you can execute `python test.py --case <idx>` to test that specific test case. See the help message (`python test.py --help`) for more details.
 
-Your solution shell will be tested for correctness on a Linux machine, using the same shell driver and trace files that were included in your lab directory. Your shell should produce identical output on these traces as the reference shell, with only two exceptions: 
+Your solution shell will be tested for correctness on a Linux machine, using the same shell driver and trace files that were included in your lab directory. Your shell should produce identical output on these traces as the reference shell, with only two exceptions:
+
 * The PIDs can (and will) be different. 
 * The output of the `/bin/ps` commands in `trace11.txt`, `trace12.txt`, and `trace13.txt` will be different from run to run. However, the running states of any mysplit processes in the output of the `/bin/ps` command should be identical.
 
