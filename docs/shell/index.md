@@ -9,14 +9,17 @@ The purpose of this lab is to become more familiar with the concepts of process 
 * Please read through "***Chapter 8 Exception Control Flow***" from the textbook "***Computer Systems: A Programmer’s Perspective (3rd Edition)***" and make sure you understand the literature and all sample codes.
 * You will need a Linux distribution to finish this lab and the lab environment for your previous labs will do.
 
-### Basic Instructions
-Start by downloading the lab repository to your preferred directory in which you plan to do your work. You can either download the repo on the web page, or clone it using `git clone https://github.com/SEU-ICS/lab`. Then do the following:
+### Environment Setup
+The code required for this lab is hosted on a [GitHub repository](https://github.com/SEU-ICS/lab). The following are the basic steps to setup your local experiment environment:
 
-* Expand/Decompress the repo if it is downloaded.
-* Change the working directory to `lab/shell`
-* Execute `make` to compile and link some test routines.
+* **Get the code**: You can download the code in two ways:
+    - *download through the web page*: visit the [GitHub repository](https://github.com/SEU-ICS/lab), click the green button labeled `<>Code`, then click `Download ZIP` in the pop-up window to start downloading, and finally decompress the just downloaded `lab-main.zip` file.
+    - *clone the repository using `git`*: jsut execute `git clone https://github.com/SEU-ICS/lab.git`
+* **Enter the lab directory**: change your working directory to `lab/shell` (or `lab-main/shell`)
+* **Compile the code**: execute `make` to compile and link some test routines.
 
-Look at the `tsh.c` (*tiny shell*) file, you will see that it contains a functional skeleton of a simple Unix shell. To help you get started, we have already implemented the less interesting functions. Your assignment is to complete the remaining empty functions listed in Table 1. Note that for our reference implementation, each function can be completed within 80 lines of code (LoC), some within 30 LoC.
+### Task Description
+Your task is to implement a simple Unix Shell, *tiny shell*, within `tsh.c`. To help you get started, we have already implemented some less interesting functionalities, and the `tsh.c` file already contains a functional skeleton of *tiny shell*. However, there are still some missing parts (marked with `/* your code here */`) in the code. Your assignment is to complete the remaining empty functions listed in Table 1. Note that for our reference implementation, each function can be completed within 80 lines of code (LoC), some within 30 LoC.
 
 <center>**Table 1. Shell Lab Functions to be Implemented**</center>
 
@@ -30,13 +33,13 @@ Look at the `tsh.c` (*tiny shell*) file, you will see that it contains a functio
 |`sigtstp_handler` | 	Catches SIGINT (ctrl-c) signals |
 |`sigint_handler` | 	Catches SIGTSTP (ctrl-z) signals |
 
-Each time you modify your `tsh.c` file, type `make` to recompile it. To run your shell, type `./tsh` to the command line:
+Each time you modify your `tsh.c` file, don't forget to execute `make` to recompile it. To run your shell, type `./tsh` in the command line:
 ```shell
 $ ./tsh
 tsh> [type commands to your shell here]
 ```
 
-At the very beginning, your shell skeleton can run but do nothing, shown as follows. You may find it hard to exit from the shell, e.g., you can not do so with `Ctrl-C` because the signal (`SIGINT`) is ignored, and the `quit` command has not been implemented. However, you can use `Ctrl-D` to trigger an end-of-file (`EOF`), or Ctrl-\ to trigger a `SIGQUIT` signal to exit from the shell.
+At the very beginning, your shell skeleton can run but do nothing, shown as follows. You may find it hard to exit from the shell, e.g., you can not do so with `ctrl-c` because the signal (`SIGINT`) is ignored, and the `quit` command has not been implemented. However, you can use `ctrl-d` to trigger an end-of-file (`EOF`), or `ctrl-\` to trigger a `SIGQUIT` signal to exit from the shell.
 ```shell
 $ ./tsh
 tsh> ls
@@ -137,9 +140,11 @@ Options:
   -g            Generate output for autograder
 ```
 
+### Trace Files
+
 We have also provided 16 trace files (`trace{01-16}.txt`) that you will use in conjunction with the shell driver to test the correctness of your shell. The lower-numbered trace files do very simple tests, and the higher-numbered tests do more complicated tests.
 
-You can run the shell driver on your shell using trace file `trace01.txt` (for instance) by typing:
+You can run the shell driver on your shell using trace file (`trace01.txt` for instance) by typing:
 ```shell
 $ ./sdriver.pl -t trace01.txt -s ./tsh -a "-p"
 ```
@@ -150,7 +155,7 @@ $ ./sdriver.pl -t trace01.txt -s ./tsh -a "-p"
 $ make test01
 ```
 
-Similarly, to compare your result with the reference shell, you can run the trace driver on the reference shell
+Similarly, to run the shell driver on the reference shell, execute:
 by typing:
 ```shell
 $ ./sdriver.pl -t trace01.txt -s ./tshref -a "-p"
@@ -160,11 +165,13 @@ or
 $ make rtest01
 ```
 
-A through test can be conducted by typing
+You can compare the outputs of both shells to know if you have done things right.
+
+To run all trace files with the reference shell, execute:
 ```shell
 $ ./reftest.sh
 ```
-Such command will produce the whole output of all test cases. For your reference, `tshref.out` gives the output of the reference solution on all traces. This might be more convenient for you than manually running the shell driver on all trace files.
+This command will generate output of all test cases. For your reference, `tshref.out` gives the output of the reference solution on all traces. This might be more convenient for you than manually running the shell driver on all trace files.
 
 The neat thing about the trace files is that they generate the same output you would have gotten had you run your shell interactively (except for an initial comment that identifies the trace). For example:
 ```shell
@@ -215,7 +222,7 @@ The parent needs to block the `SIGCHLD` signals in this way in order to avoid th
 Here is the workaround: After the `fork`, but before the `execve`, the child process should call `setpgid(0, 0)`, which puts the child in a new process group whose group ID is identical to the child’s PID. This ensures that there will be only one process, your shell, in the foreground process group. When you type `ctrl-c`, the shell should catch the resulting `SIGINT` and then forward it to the appropriate foreground job (or more precisely, the process group that contains the foreground job).
 
 ## Grading
-We provide an auto-grading tool and a successful tiny shell show have the following outputs:
+We use the aforementioned 16 trace files as test cases, each test case counts for **5** points, and you will get a total of **80** points if you pass all tests. We provide you an auto-grading script `test.py`. The script will execute the shell driver with the shell program set to `./tsh`, and compare the outputs with that of the reference shell (i.e., `./tshref.out`). The script shows the following outputs for a "correct" tiny shell implementation:
 
 ```shell
 $ python test.py 
@@ -237,7 +244,7 @@ test case 15 passed
 test case 16 passed
 ```
 
-Each test count for **5** points, and you will get total **80** points if all tests pass. If you don’t see something like `test case <idx> passed` in the outputs, your shell does not pass the corresponding test case. Under this case, you can execute `python test.py --case <idx>` to test that specific test case. See the help message (`python test.py --help`) for more details.
+If you don’t see something like `test case <idx> passed` in the outputs, your `tsh` implementation does not pass the corresponding test case. Under this case, you can compare your output with the reference output, fix your code accordingly, recompile it, and execute `python test.py --case <idx>` later to see if you have passed that specific test case. See the help message (`python test.py --help`) for more details.
 
 Your solution shell will be tested for correctness on a Linux machine, using the same shell driver and trace files that were included in your lab directory. Your shell should produce identical output on these traces as the reference shell, with only two exceptions:
 
@@ -245,9 +252,19 @@ Your solution shell will be tested for correctness on a Linux machine, using the
 * The output of the `/bin/ps` commands in `trace11.txt`, `trace12.txt`, and `trace13.txt` will be different from run to run. However, the running states of any mysplit processes in the output of the `/bin/ps` command should be identical.
 
 ## Hand-In Instructions
+We use GitHub Classroom to manage and organize labs. Follow these steps to submit your `tsh` implementation:
 
-* Join the Github Classroom and accept the assignment Shell-Lab via the invitation link. You will be assigned a private repository.
-* Submit your `tsh.c` file to the above repository with a commit, and our auto-grading tool will evaluate your submission. Only you, teachers and TAs can view the score of your submission.
-* You can submit as many times as you want before the deadline. The final score will serve as your grade for this lab.
+* **Join the GitHub Classroom**: An invitation link has been shared in the course group chat, open the link to join the GitHub Classroom. You'll need to register a GitHub account if you don't have one. You should be able to see your student ID (e.g., `09Jxxxxx`) listed in the roaster, please carefully find your student ID and link your GitHub account with it.
+* **Accept the assignment**: After joining the Classroom, there will be a window asking you to accept the assignment. A private repository will be created for you once you accept the assignment.
+* **Submit your work**: Submit your `tsh.c` file to your repository with a commit. You can submit as many times as you want before the deadline. There are two ways to submit your work:
+    - *operate on the web page*: open your repository, click `tsh.c`, click the pencil icon in the upper right corner, copy-paste the content your local `tsh.c` file to the web page, click the green button labeled `Commit changes...`, and click the green button labeled with `Commit changes` in the pop-up window.
+    - *use `git`*: clone the repository with `git clone https://github.com/SEU-ICS/shell-lab-<your id here>.git`, copy your local `tsh.c` file to `shell-lab-<your id here>/tsh.c`, then commit the changes with `git add . && git commit && git push`.
+* **Grading**: Our auto-grading tool will automatically evaluate your submissions every time you push a commit. Only you, teachers and TAs can view the score of your submission. The score of your final submission will serve as your grade for this lab.
+
+**NOTE**:
+
+1. You will not be able to submit your work after the deadline. Manage your time properly.
+2. The online auto-grader runs slow and should only be used to obtain your final score. Use the provided scripts locally to debug and evaluate your `tsh`.
+3. **DO NOT** modify **ANYTHING** under the `.github` directory of your repository. A script will examine your repositories for such behaviors after the deadline, and we will regrade your submission if you violate this rule.
 
 Further instructions, if any, will be announced in form of class group notifications.
