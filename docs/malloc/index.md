@@ -13,8 +13,8 @@ In this lab, you will be writing a dynamic storage allocator for C programs -- t
 The code required for the malloc lab in hosted on the same GitHub repository in the *shell lab*. The following are the basic steps to setup your local experiment environment:
 
 * **Get the code**:
-  * *downloading through the web page*: Please refer to the [shell lab guidance](../shell/index.md).
-  * *uisng `git`*: Execute `git pull` under the code directory if you downloaded the code using `git clone` in the previous *shell lab*. Otherwise, execute `git clone https://github.com/SEU-ICS/lab.git`.
+    * *downloading through the web page*: Please refer to the [shell lab guidance](../shell/index.md).
+    * *using `git`*: Execute `git pull` under the code directory if you downloaded the code using `git clone` in the previous *shell lab*. Otherwise, execute `git clone https://github.com/SEU-ICS/lab.git`.
 * **Enter the lab directory**: change your working directory to `lab/malloc` (or `lab-main/malloc`)
 
 ## Task Description
@@ -32,12 +32,13 @@ You will need to implement a dynamic storage allocator within `mm.c` by implemen
 |`void *find_fit(size_t asize)` | An internal function that locates a free memory chunk, used by `malloc()`. Find a block through all free blocks that meet the requirement of `asize`*. |
 |`void place(void *bp, size_t asize)` | An internal function that places the requested block in the new free block., used by `malloc()` |
 
-We have already implemented some helper routines in `memlib.c` which you can use.
-  * `void *mem_sbrk(int incr)`: Expands the heap by `incr` bytes, where `incr` is a positive non-zero integer, and returns a generic pointer to the first byte of the newly allocated heap area. The semantics are identical to the Unix `sbrk` function, except that `mem_sbrk `accepts only a positive non-zero integer argument.
-  * `void *mem_heap_lo(void)`: Returns a generic pointer to the first byte in the heap.
-  * `void *mem_heap_hi(void)`: Returns a generic pointer to the last byte in the heap.
-  * `size t mem_heapsize(void)`: Returns the current size of the heap in bytes.
-  * `size t mem_pagesize(void)`: Returns the system’s page size in bytes (4K on Linux systems).
+We have already implemented some helper routines in `memlib.c` which you can use:
+
+* `void *mem_sbrk(int incr)`: Expands the heap by `incr` bytes, where `incr` is a positive non-zero integer, and returns a generic pointer to the first byte of the newly allocated heap area. The semantics are identical to the Unix `sbrk` function, except that `mem_sbrk `accepts only a positive non-zero integer argument.
+* `void *mem_heap_lo(void)`: Returns a generic pointer to the first byte in the heap.
+* `void *mem_heap_hi(void)`: Returns a generic pointer to the last byte in the heap.
+* `size t mem_heapsize(void)`: Returns the current size of the heap in bytes.
+* `size t mem_pagesize(void)`: Returns the system’s page size in bytes (4K on Linux systems).
 
 We have also provided the basic implementations of some important routines in `mm.c` (e.g., `coalesce` and `extend_heap`). *However, you may need to modify these routines to improve the performance of your implementation.*
 
@@ -100,10 +101,10 @@ To check the performance of your heap implementation, execute:
 ## Grading
 The grading of the final hand-in will be based on the *correctness* and *performance* of your allocator on the given traces, the quality of your heap checker, and your *coding style*:
 
-* **Correctness (80 points)**: we use 20 trace files as test cases for correctness, each test case counts for **4** points, and you will get a total of **80** points if you pass all tests. Use the correctness check script mentioned above to estimate your correctness score.
+* **Correctness (80 points)**: we use *20* trace files as test cases for correctness, each test case counts for *4* points, and you will get a total of *80* points if you pass all tests. Use the correctness check script mentioned above to estimate your correctness score.
 * **Performance (100 points)**: Two metrics will be used to evaluate your solution. Use the performance check script to estimate your performance score.
-  * *Space utilization*: The peak ratio between the aggregate amount of memory used by the driver (i.e., allocated via malloc but not yet freed via free) and the size of the heap used by your allocator. The optimal ratio equals 1. You should find good policies to minimize fragmentation in order to make this ratio as close as possible to the optimal.
-  * *Throughput*: The average number of operations completed per second.
+    * *Space utilization*: The peak ratio between the aggregate amount of memory used by the driver (i.e., allocated via `malloc` but not yet freed via `free`) and the size of the heap used by your allocator. The optimal ratio equals 1. You should find good policies to minimize fragmentation in order to make this ratio as close as possible to the optimal.
+    * *Throughput*: The average number of operations completed per second.
 
 ## Hand-In Instructions
 We use GitHub Classroom to manage and organize labs. Follow these steps to submit your `mm.c`:
