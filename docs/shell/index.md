@@ -14,7 +14,7 @@ The code required for this lab is hosted on a [GitHub repository](https://github
 
 * **Get the code**: You can download the code in two ways:
     - *download through the web page*: visit the [GitHub repository](https://github.com/SEU-ICS/lab), click the green button labeled `<>Code`, then click `Download ZIP` in the pop-up window to start downloading, and finally decompress the just downloaded `lab-main.zip` file.
-    - *clone the repository using `git`*: jsut execute `git clone https://github.com/SEU-ICS/lab.git`
+    - *clone the repository using `git`*: execute `git clone https://github.com/SEU-ICS/lab.git`
 * **Enter the lab directory**: change your working directory to `lab/shell` (or `lab-main/shell`)
 * **Compile the code**: execute `make` to compile and link some test routines.
 
