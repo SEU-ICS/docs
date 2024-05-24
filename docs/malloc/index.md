@@ -48,7 +48,7 @@ We have also provided the basic implementations of `calloc` and `realloc` in `mm
 
 ### The Trace-driven Driver Program
 
-The driver program `mdriver` (compiled from `mdriver.c`) tests your `mm.c` implementation for correctness, space utilization, and throughput. The driver program is controlled by a set of *trace files* that are included in the `traces` folder. Each trace file contains a sequence of allocate and free directions that instruct the driver to call your `malloc` and `free` routines in some sequence. The driver and the trace files are the same ones we will use when we grade your handin `mm.c` file.
+The driver program `mdriver` (compiled from `mdriver.c`) tests your `mm.c` implementation for correctness, space utilization, and throughput. The driver program is controlled by a set of *trace files* that are included in the `traces` folder. Each trace file contains a sequence of allocate and free operations that instruct the driver to call your `malloc` and `free` routines in some sequence. The driver and the trace files are the same ones we will use when we grade your handin `mm.c` file.
 
 When the driver program is run, it will run each trace file *12* times: once to make sure your implementation is correct, once to determine the space utilization, and *10* times to determine the performance.
 
@@ -76,6 +76,8 @@ If you run `mdriver` with no command line arguments, it will test the correctnes
 
 - `-P`: Only output perf score to `stdout`.
 
+> Don't forget to execute `make -B` to compile your code. Some scripts listed below may re-compile your code with compiler flags that suppress debug outputs. Therefore it is recommended to execute `make -B` first before you want to play with `mdriver`
+
 ### Correctness Check
 To check the correctness of your heap implementation on all trace files, execute:
 ```shell
@@ -93,6 +95,9 @@ To check the performance of your heap implementation, execute:
 ```shell
 ./scripts/get-perf-index.sh
 ```
+
+### Debug Your Code
+Run `mdriver` with the `-D -v 2` option to get full debug output. If you want to check the working condition of your heap allocator on-the-fly, try to output some debug information in the `bool mm_checkheap(int lineno)` function within `mm.c`. The argument and return value of this function are useless and you can just safely ignore them. When `mdriver` is executed with the `-D` option, it calls `mm_checkheap` everytime before it performs heap operations (e.g., `malloc`, and `free`). For example, you can walk the whole heap and print every memory chunks to see how your heap changes over time.
 
 ## Programming Rules
 
