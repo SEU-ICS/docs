@@ -6,7 +6,7 @@
 
 In this lab, you will be writing a dynamic storage allocator for C programs -- that is, your own version of the `malloc`, `free`, `realloc`, and `calloc` functions. You are encouraged to explore the design space creatively and implement an allocator that is *correct*, *efficient*, and *fast*.
 
-***You are recommended to implement an implicit list allocator.***
+***You are recommended to start by implementing an implicit list allocator. Subsequently, you can build on this foundation to implement other allocators (e.g., explicit list) to improve the performance of your heap allocator. ***
 
 ## Environment Setup
 
@@ -108,13 +108,16 @@ The grading of the final hand-in will be based on the *correctness* and *perform
     * *Space utilization*: The peak ratio between the aggregate amount of memory used by the driver (i.e., allocated via `malloc` but not yet freed via `free`) and the size of the heap used by your allocator. The optimal ratio equals 1. You should find good policies to minimize fragmentation in order to make this ratio as close as possible to the optimal.
     * *Throughput*: The average number of operations completed per second.
 
+Your final grade is calculated by the following formula. The valuation of the weighting parameters $a$ and $b$ depends on the overall performance of the class.
+$$Grade = a \times CorrectnessScore + b \times PerformanceScore$$
+
 ## Hand-In Instructions
 We use GitHub Classroom to manage and organize labs. Follow these steps to submit your `mm.c`:
 
 * **Join the GitHub Classroom**: You can safely jump to the next step if you have joined the classroom. Otherwise, an invitation link has been shared in the course group chat, open the link to join the GitHub Classroom. You'll need to register a GitHub account if you don't have one. You should be able to see your student ID (e.g., `09Jxxxxx`) listed in the roaster, please carefully find your student ID and link your GitHub account with it.
 * **Accept the assignment**: An invitation link has been shared in the course group chat, you will need to open the link to accept the assignment. A private repository will be created for you once you accept the assignment.
 * **Submit your work**: Submit your `mm.c` file to your repository with a commit. You can submit as many times as you want before the deadline. Please refer to the [shell lab guidance](../shell/index.md) for how to submit.
-* **Grading**: Our auto-grading tool will automatically evaluate your submissions every time you push a commit. Only you, teachers and TAs can view the score of your submission. The score of your final submission will serve as your grade for this lab.
+* **Grading**: Our auto-grading tool will automatically evaluate your submissions every time you push a commit. Only you, teachers and TAs can view the score of your submission. The score that auto-grader reports is the sum of your correctness score and performance score (i.e., $a=1, b=1$) and does not reflect your final grade. However, this score is guaranteed to positively correlates with your final grade -- higher score, higher final grade. We will use the score of your final submission to calculate your final grade for this lab.
 
 **NOTE**:
 
