@@ -6,7 +6,7 @@
 
 In this lab, you will be writing a dynamic storage allocator for C programs -- that is, your own version of the `malloc`, `free`, `realloc`, and `calloc` functions. You are encouraged to explore the design space creatively and implement an allocator that is *correct*, *efficient*, and *fast*.
 
-***You are recommended to start by implementing an implicit list allocator. Subsequently, you can build on this foundation to implement other allocators (e.g., explicit list) to improve the performance of your heap allocator. ***
+***You are recommended to start by implementing an implicit list allocator. Subsequently, you can build on this foundation to implement other allocators (e.g., explicit list) to improve the performance of your heap allocator.***
 
 ## Environment Setup
 
@@ -29,7 +29,7 @@ You will need to implement a dynamic storage allocator within `mm.c` by implemen
 |`int mm_init(void)` | The exposed API that performs any necessary initializations, such as allocating the initial heap area. The return value should be -1 if there was a problem in performing the initialization, 0 otherwise.<br> Note taht every time the driver executes a new trace, it resets your heap to the empty heap by calling your mm init function. |
 |`void *malloc(size_t size)` | The exposed API that allocates memory chuncks. This routine returns a pointer to an allocated block payload of at least `size` bytes. The entire allocated block should lie within the heap region and should not overlap with any other allocated chunk. |
 |`void free(void *ptr)` | The exposed API that frees allocated memory chunks. This routine frees the block pointed to by `ptr`. It returns nothing. This routine is only guaranteed to work when the passed pointer (i.e., `ptr`) was returned by an earlier call to `malloc`, `calloc`, or `realloc` and has not yet been freed. `free(NULL)` has no effect. |
-|`void *find_fit(size_t asize)` | An internal function that locates a free memory chunk, used by `malloc()`. Find a block through all free blocks that meet the requirement of `asize`*. |
+|`void *find_fit(size_t asize)` | An internal function that locates a free memory chunk, used by `malloc()`. Find a block through all free blocks that meet the requirement of `asize`. |
 |`void place(void *bp, size_t asize)` | An internal function that places the requested block in the new free block., used by `malloc()` |
 | `void *extend_heap(size_t words)` | An internal function that extends the heap by `words` words. It returns a pointer to the new free block on success, `NULL` otherwise.  |
 | `void *coalesce(void *bp)` | An internal function that merges two adjacent free memory chunks and returns the merged block. We have handled the simple case where both the previous and the next chunks are allocated. You will need to implement other cases. |
@@ -109,6 +109,7 @@ The grading of the final hand-in will be based on the *correctness* and *perform
     * *Throughput*: The average number of operations completed per second.
 
 Your final grade is calculated by the following formula. The valuation of the weighting parameters $a$ and $b$ depends on the overall performance of the class.
+
 $$Grade = a \times CorrectnessScore + b \times PerformanceScore$$
 
 ## Hand-In Instructions
