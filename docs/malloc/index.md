@@ -31,6 +31,8 @@ You will need to implement a dynamic storage allocator within `mm.c` by implemen
 |`void free(void *ptr)` | The exposed API that frees allocated memory chunks. This routine frees the block pointed to by `ptr`. It returns nothing. This routine is only guaranteed to work when the passed pointer (i.e., `ptr`) was returned by an earlier call to `malloc`, `calloc`, or `realloc` and has not yet been freed. `free(NULL)` has no effect. |
 |`void *find_fit(size_t asize)` | An internal function that locates a free memory chunk, used by `malloc()`. Find a block through all free blocks that meet the requirement of `asize`*. |
 |`void place(void *bp, size_t asize)` | An internal function that places the requested block in the new free block., used by `malloc()` |
+| `void *extend_heap(size_t words)` | An internal function that extends the heap by `words` words. It returns a pointer to the new free block on success, `NULL` otherwise.  |
+| `void *coalesce(void *bp)` | An internal function that merges two adjacent free memory chunks and returns the merged block. We have handled the simple case where both the previous and the next chunks are allocated. You will need to implement other cases. |
 
 We have already implemented some helper routines in `memlib.c` which you can use:
 
@@ -40,7 +42,7 @@ We have already implemented some helper routines in `memlib.c` which you can use
 * `size t mem_heapsize(void)`: Returns the current size of the heap in bytes.
 * `size t mem_pagesize(void)`: Returns the system’s page size in bytes (4K on Linux systems).
 
-We have also provided the basic implementations of some important routines in `mm.c` (e.g., `coalesce` and `extend_heap`). *However, you may need to modify these routines to improve the performance of your implementation.*
+We have also provided the basic implementations of `calloc` and `realloc` in `mm.c`. *However, you may need to modify these routines to improve the performance of your implementation.*
 
 ## Checking Your Work
 
