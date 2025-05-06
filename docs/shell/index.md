@@ -30,8 +30,8 @@ Your task is to implement a simple Unix Shell, *tiny shell*, within `tsh.c`. To 
 |`do_bgfg` |	Implements the bg and fg built-in commands |
 |`waitfg` | 	Waits for a foreground job to complete |
 |`sigchld_handler` | 	Catches SIGCHILD signals |
-|`sigtstp_handler` | 	Catches SIGINT (ctrl-c) signals |
-|`sigint_handler` | 	Catches SIGTSTP (ctrl-z) signals |
+|`sigint_handler` | 	Catches SIGINT (ctrl-c) signals |
+|`sigtstp_handler` | 	Catches SIGTSTP (ctrl-z) signals |
 
 Each time you modify your `tsh.c` file, don't forget to execute `make` to recompile it. To run your shell, type `./tsh` in the command line:
 ```shell
