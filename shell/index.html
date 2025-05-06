@@ -1,0 +1,920 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../malloc/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>ShellLab - ICS Lab Guidance</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shell-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ICS Lab Guidance" class="md-header__button md-logo" aria-label="ICS Lab Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ICS Lab Guidance
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ShellLab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ICS Lab Guidance" class="md-nav__button md-logo" aria-label="ICS Lab Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ICS Lab Guidance
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ShellLab
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ShellLab
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-overview-of-unix-shells" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Overview of Unix Shells
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tsh-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      The tsh Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Your Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trace Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hand-in-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hand-In Instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../malloc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MallocLab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-overview-of-unix-shells" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Overview of Unix Shells
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tsh-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      The tsh Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Your Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trace-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trace Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hand-in-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hand-In Instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="shell-lab">Shell Lab</h1>
+<blockquote>
+<p>Instructor: <em>Prof. Zhen Ling</em></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>The purpose of this lab is to become more familiar with the concepts of process control and signaling. You’ll do this by writing a simple Unix shell program that supports job control.</p>
+<h3 id="pre-requests">Pre-requests</h3>
+<ul>
+<li>Please read through "<strong><em>Chapter 8 Exception Control Flow</em></strong>" from the textbook "<strong><em>Computer Systems: A Programmer’s Perspective (3rd Edition)</em></strong>" and make sure you understand the literature and all sample codes.</li>
+<li>You will need a Linux distribution to finish this lab and the lab environment for your previous labs will do.</li>
+</ul>
+<h3 id="environment-setup">Environment Setup</h3>
+<p>The code required for this lab is hosted on a <a href="https://github.com/SEU-ICS/lab">GitHub repository</a>. The following are the basic steps to setup your local experiment environment:</p>
+<ul>
+<li><strong>Get the code</strong>: You can download the code in two ways:<ul>
+<li><em>download through the web page</em>: visit the <a href="https://github.com/SEU-ICS/lab">GitHub repository</a>, click the green button labeled <code>&lt;&gt;Code</code>, then click <code>Download ZIP</code> in the pop-up window to start downloading, and finally decompress the just downloaded <code>lab-main.zip</code> file.</li>
+<li><em>clone the repository using <code>git</code></em>: execute <code>git clone https://github.com/SEU-ICS/lab.git</code></li>
+</ul>
+</li>
+<li><strong>Enter the lab directory</strong>: change your working directory to <code>lab/shell</code> (or <code>lab-main/shell</code>)</li>
+<li><strong>Compile the code</strong>: execute <code>make</code> to compile and link some test routines.</li>
+</ul>
+<h3 id="task-description">Task Description</h3>
+<p>Your task is to implement a simple Unix Shell, <em>tiny shell</em>, within <code>tsh.c</code>. To help you get started, we have already implemented some less interesting functionalities, and the <code>tsh.c</code> file already contains a functional skeleton of <em>tiny shell</em>. However, there are still some missing parts (marked with <code>/* your code here */</code>) in the code. Your assignment is to complete the remaining empty functions listed in Table 1. Note that for our reference implementation, each function can be completed within 80 lines of code (LoC), some within 30 LoC.</p>
+<center>**Table 1. Shell Lab Functions to be Implemented**</center>
+
+<table>
+<thead>
+<tr>
+<th>Function Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eval</code></td>
+<td>Main routine that parses and interprets the command line</td>
+</tr>
+<tr>
+<td><code>builtin_cmd</code></td>
+<td>Recognizes and interprets the built-in commands: quit, fg, bg, and jobs</td>
+</tr>
+<tr>
+<td><code>do_bgfg</code></td>
+<td>Implements the bg and fg built-in commands</td>
+</tr>
+<tr>
+<td><code>waitfg</code></td>
+<td>Waits for a foreground job to complete</td>
+</tr>
+<tr>
+<td><code>sigchld_handler</code></td>
+<td>Catches SIGCHILD signals</td>
+</tr>
+<tr>
+<td><code>sigint_handler</code></td>
+<td>Catches SIGINT (ctrl-c) signals</td>
+</tr>
+<tr>
+<td><code>sigtstp_handler</code></td>
+<td>Catches SIGTSTP (ctrl-z) signals</td>
+</tr>
+</tbody>
+</table>
+<p>Each time you modify your <code>tsh.c</code> file, don't forget to execute <code>make</code> to recompile it. To run your shell, type <code>./tsh</code> in the command line:</p>
+<pre><code class="language-shell">$ ./tsh
+tsh&gt; [type commands to your shell here]
+</code></pre>
+<p>At the very beginning, your shell skeleton can run but do nothing, shown as follows. You may find it hard to exit from the shell, e.g., you can not do so with <code>ctrl-c</code> because the signal (<code>SIGINT</code>) is ignored, and the <code>quit</code> command has not been implemented. However, you can use <code>ctrl-d</code> to trigger an end-of-file (<code>EOF</code>), or <code>ctrl-\</code> to trigger a <code>SIGQUIT</code> signal to exit from the shell.</p>
+<pre><code class="language-shell">$ ./tsh
+tsh&gt; ls
+tsh&gt; quit
+tsh&gt; &amp;
+tsh&gt; ls | grep csapp
+tsh&gt; ^C^C^C
+</code></pre>
+<h2 id="general-overview-of-unix-shells">General Overview of Unix Shells</h2>
+<p>A <em>shell</em> is an interactive command-line interpreter that runs programs on behalf of the user. A shell repeatedly prints a prompt, waits for a <em>command line</em> on <code>stdin</code>, and then carries out some action, as directed by the contents of the command line.</p>
+<p>The command line is a sequence of ASCII text words delimited by whitespace. The first word in the command line is either the name of a built-in command or the pathname of an executable file. The remaining words are command-line arguments. If the first word is a built-in command, the shell immediately executes the command in the current process. Otherwise, the word is assumed to be the pathname of an executable program. In this case, the shell forks a child process, then loads and runs the program in the context of the child. The child processes created as a result of interpreting a single command line are known collectively as a <em>job</em>. In general, a job can consist of multiple child processes connected by Unix pipes.</p>
+<p>If the command line ends with an ampersand <code>&amp;</code>, then the job runs in the <em>background</em>, which means that the shell does not wait for the job to terminate before printing the prompt and awaiting the next command line. Otherwise, the job runs in the <em>foreground</em>, which means that the shell waits for the job to terminate before awaiting the next command line. Thus, at any point in time, at most one job can be running in the foreground. However, an arbitrary number of jobs can run in the background.</p>
+<p>For example, typing the command line</p>
+<pre><code class="language-shell">tsh&gt; jobs
+causes the shell to execute the built-in jobs command. 
+Typing the command line
+tsh&gt; /bin/ls -l -d 
+</code></pre>
+<p>runs the <code>ls</code> program in the foreground. By convention, the shell ensures that when the program begins executing its main routine</p>
+<pre><code class="language-C">int main(int argc, char *argv[])
+</code></pre>
+<p>the <code>argc</code> and <code>argv</code> arguments have the following values:</p>
+<pre><code>argc == 3
+argv[0] == &quot;/bin/ls&quot;
+argv[1]== -l&quot;
+argv[2]== &quot;-d
+</code></pre>
+<p>Alternatively, typing the command line</p>
+<pre><code class="language-shell">tsh&gt; /bin/ls -l -d &amp;
+</code></pre>
+<p>runs the <code>ls</code> program in the background. </p>
+<p>Unix shells support the notion of <em>job control</em>, which allows users to move jobs back and forth between background and foreground, and to change the process state (running, stopped, or terminated) of the processes in a job. Typing <code>ctrl-c</code> causes a <code>SIGINT</code> signal to be delivered to each process in the foreground job. The default action for <code>SIGINT</code> is to terminate the process. Similarly, typing <code>ctrl-z</code> causes a <code>SIGTSTP</code> signal to be delivered to each process in the foreground job. The default action for <code>SIGTSTP</code> is to place a process in the stopped state, where it remains until it is awakened by the receipt of a <code>SIGCONT</code> signal. Unix shells also provide various built-in commands that support job control. For example:</p>
+<ul>
+<li><code>jobs</code>: List the running and stopped background jobs. </li>
+<li><code>bg &lt;job&gt;</code>: Change a stopped background job to a running background job. </li>
+<li><code>fg &lt;job&gt;</code>: Change a stopped or running background job to a running in the foreground. </li>
+<li><code>kill &lt;job&gt;</code>: Terminate a job.</li>
+</ul>
+<h2 id="the-tsh-specification">The <code>tsh</code> Specification</h2>
+<p>Your <code>tsh</code> shell should have the following features:</p>
+<ul>
+<li>The prompt should be the string <code>tsh&gt;</code>.</li>
+<li>The command line typed by the user should consist of a <code>&lt;name&gt;</code> and zero or more arguments, all separated by one or more spaces. If <code>&lt;name&gt;</code> is a built-in command, then <code>tsh</code> should handle it immediately and wait for the next command line. Otherwise, <code>tsh</code> should assume that <code>&lt;name&gt;</code> is the path of an executable file, which it loads and runs in the context of an initial child process (In this context, the term job refers to this initial child process).</li>
+<li><code>tsh</code> does not need to support pipes (|) or I/O redirection (&lt; and &gt;). </li>
+<li>Typing <code>ctrl-c</code> (<code>ctrl-z</code>) should cause a <code>SIGINT</code> (<code>SIGTSTP</code>) signal to be sent to the current foreground job, as well as any descendants of that job (e.g., any child processes that it forked). If there is no foreground job, then the signal should have no effect. </li>
+<li>If the command line ends with an ampersand <code>&amp;</code>, then <code>tsh</code> should run the job in the background. Otherwise, it should run the job in the foreground. </li>
+<li>Each job can be identified by either a process ID (PID) or a job ID (JID), which is a positive integer assigned by <code>tsh</code>. PID and JID are two distinct IDs for a certain job. The PID is determined by the operating system while the JID is assigned by <code>tsh</code>. For example, a job can have a PID of 9978 while having a JID of 8 at the same time and this job can be equally identified using either PID 9978 or JID 8. JIDs should be denoted on the command line by the prefix <code>%</code>. For example, <code>%5</code> denotes JID 5, and <code>5</code> denotes PID 5. (We have provided you with all of the routines you need for manipulating the job list so that you do not need to implement them yourselves.) </li>
+<li><code>tsh</code> should support the following built-in commands: <ul>
+<li>The <code>quit</code> command terminates the shell. </li>
+<li>The <code>jobs</code> command lists all background jobs. </li>
+<li>The <code>bg &lt;job&gt;</code> command restarts <code>&lt;job&gt;</code> by sending it a <code>SIGCONT</code> signal, and then runs it in the background. The <code>&lt;job&gt;</code> argument can be either a PID or a JID. </li>
+<li>The <code>fg &lt;job&gt;</code> command restarts <code>&lt;job&gt;</code> by sending it a <code>SIGCONT</code> signal, and then runs it in the foreground. The <code>&lt;job&gt;</code> argument can be either a PID or a JID. </li>
+</ul>
+</li>
+<li><code>tsh</code> should reap all of its zombie children. If any job terminates because it receives a signal, then <code>tsh</code> should recognize this event and print a message with the job’s PID and a description of the signal.</li>
+</ul>
+<h2 id="checking-your-work">Checking Your Work</h2>
+<p>We have provided some tools to help you check your work. </p>
+<h3 id="reference-solution">Reference Solution</h3>
+<p>The Linux executable <code>tshref</code> is the reference solution for the shell. You are encouraged to first paly with this shell by typing</p>
+<pre><code class="language-shell">$ ./tshref
+tsh&gt; /bin/ls
+</code></pre>
+<p>to call <code>ls</code> from the reference shell and you should get outputs similar to those by running <code>ls</code> through a Linux shell. Run this program to resolve any questions you have about how your shell should behave. Your shell should emit output that is identical to the reference solution (except for PIDs, of course, which change from run to run).</p>
+<h3 id="shell-driver">Shell Driver</h3>
+<p>The <code>sdriver.pl</code> program executes a shell as a child process, sends it commands and signals as directed by a trace file, and captures and displays the output from the shell. </p>
+<pre><code class="language-shell">$ ./sdriver.pl -h
+
+Usage: ./sdriver.pl [-hv] -t &lt;trace&gt; -s &lt;shellprog&gt; -a &lt;args&gt;
+Options:
+  -h            Print this message
+  -v            Be more verbose
+  -t &lt;trace&gt;    Trace file
+  -s &lt;shell&gt;    Shell program to test
+  -a &lt;args&gt;     Shell arguments
+  -g            Generate output for autograder
+</code></pre>
+<h3 id="trace-files">Trace Files</h3>
+<p>We have also provided 16 trace files (<code>trace{01-16}.txt</code>) that you will use in conjunction with the shell driver to test the correctness of your shell. The lower-numbered trace files do very simple tests, and the higher-numbered tests do more complicated tests.</p>
+<p>You can run the shell driver on your shell using trace file (<code>trace01.txt</code> for instance) by typing:</p>
+<pre><code class="language-shell">$ ./sdriver.pl -t trace01.txt -s ./tsh -a &quot;-p&quot;
+</code></pre>
+<p>(the -a "-p" argument tells your shell not to emit a prompt), or</p>
+<pre><code class="language-shell">$ make test01
+</code></pre>
+<p>Similarly, to run the shell driver on the reference shell, execute:
+by typing:</p>
+<pre><code class="language-shell">$ ./sdriver.pl -t trace01.txt -s ./tshref -a &quot;-p&quot;
+</code></pre>
+<p>or</p>
+<pre><code class="language-shell">$ make rtest01
+</code></pre>
+<p>You can compare the outputs of both shells to know if you have done things right.</p>
+<p>To run all trace files with the reference shell, execute:</p>
+<pre><code class="language-shell">$ ./reftest.sh
+</code></pre>
+<p>This command will generate output of all test cases. For your reference, <code>tshref.out</code> gives the output of the reference solution on all traces. This might be more convenient for you than manually running the shell driver on all trace files.</p>
+<p>The neat thing about the trace files is that they generate the same output you would have gotten had you run your shell interactively (except for an initial comment that identifies the trace). For example:</p>
+<pre><code class="language-shell">$ make rtest15
+./sdriver.pl -t trace15.txt -s ./tshref -a &quot;-p&quot;
+#
+# trace15.txt - Putting it all together
+#
+tsh&gt; ./bogus
+./bogus: Command not found
+tsh&gt; ./myspin 10
+Job [1] (11472) terminated by signal 2
+tsh&gt; ./myspin 3 &amp;
+[1] (11491) ./myspin 3 &amp;
+tsh&gt; ./myspin 4 &amp;
+[2] (11493) ./myspin 4 &amp;
+tsh&gt; jobs
+[1] (11491) Running ./myspin 3 &amp;
+[2] (11493) Running ./myspin 4 &amp;
+tsh&gt; fg %1
+Job [1] (11491) stopped by signal 20
+tsh&gt; jobs
+[1] (11491) Stopped ./myspin 3 &amp;
+[2] (11493) Running ./myspin 4 &amp;
+tsh&gt; bg %3
+%3: No such job
+tsh&gt; bg %1
+[1] (11491) ./myspin 3 &amp;
+tsh&gt; jobs
+[1] (11491) Running ./myspin 3 &amp;
+[2] (11493) Running ./myspin 4 &amp;
+tsh&gt; fg %1
+tsh&gt; quit
+</code></pre>
+<h2 id="hints">Hints</h2>
+<ul>
+<li>Use the trace files to guide the development of your shell. Starting with <code>trace01.txt</code>, make sure that your shell produces the identical output as the reference shell. Then move on to trace file <code>trace02.txt</code>, and so on.</li>
+<li>The <code>waitpid</code>, <code>kill</code>, <code>fork</code>, <code>execve</code>, <code>setpgid</code>, and <code>sigprocmask</code> functions will come in very handy. The <code>WUNTRACED</code> and <code>WNOHANG</code> options to <code>waitpid</code> will also be useful.</li>
+<li>When you implement your signal handlers, be sure to send <code>SIGINT</code> and <code>SIGTSTP</code> signals to the entire foreground process group, using <code>-pid</code> instead of <code>pid</code> in the argument to the <code>kill</code> function. The <code>sdriver.pl</code> program tests for this error.</li>
+<li>One of the tricky parts of the assignment is deciding on the allocation of work between the <code>waitfg</code> and <code>sigchld_handler</code> functions. We recommend the following approach:<ul>
+<li>In <code>waitfg</code>, use a busy loop around the sleep function.</li>
+<li>In <code>sigchld_handler</code>, use exactly one call to <code>waitpid</code>.
+While other solutions are possible, such as calling <code>waitpid</code> in both <code>waitfg</code> and <code>sigchld_handler</code>, these can be very confusing. It is simpler to do all reaping in the handler.</li>
+</ul>
+</li>
+<li>In <code>eval</code>, the parent must use <code>sigprocmask</code> to block <code>SIGCHLD</code> signals before it forks the child, and then unblock these signals, again using sigprocmask after it adds the child to the job list by calling <code>addjob</code>. Since children inherit the <em>blocked</em> vectors of their parents, the child must be sure to then unblock <code>SIGCHLD</code> signals before it execs the new program.
+The parent needs to block the <code>SIGCHLD</code> signals in this way in order to avoid the race condition where the child is reaped by <code>sigchld_handler</code> (and thus removed from the job list) before the parent calls <code>addjob</code>.</li>
+<li>Programs such as <code>more</code>, <code>less</code>, <code>vi</code>, and <code>emacs</code> do strange things with the terminal settings. Don’t run these programs from your shell. Stick with simple text-based programs such as <code>/bin/ls</code>, <code>/bin/ps</code>, and <code>/bin/echo</code>.</li>
+<li>When you run your shell from the standard Unix shell, your shell is running in the foreground process group. If your shell then creates a child process, by default that child will also be a member of the foreground process group. Since typing <code>ctrl-c</code> sends a <code>SIGINT</code> to <strong>every process in the foreground group</strong>, typing <code>ctrl-c</code> will send a <code>SIGINT</code> to your shell, as well as to every process that your shell created, which obviously isn’t correct.
+Here is the workaround: <strong>After the <code>fork</code>, but before the <code>execve</code>, the child process should call <code>setpgid(0, 0)</code></strong>, which puts the child in a new process group whose group ID is identical to the child’s PID. This ensures that there will be only one process, your shell, in the foreground process group. When you type <code>ctrl-c</code>, the shell should catch the resulting <code>SIGINT</code> and then forward it to the appropriate foreground job (or more precisely, the process group that contains the foreground job).</li>
+</ul>
+<h2 id="grading">Grading</h2>
+<p>We use the aforementioned 16 trace files as test cases, each test case counts for <strong>5</strong> points, and you will get a total of <strong>80</strong> points if you pass all tests. We provide you an auto-grading script <code>test.py</code>. The script will execute the shell driver with the shell program set to <code>./tsh</code>, and compare the outputs with that of the reference shell (i.e., <code>./tshref.out</code>). The script shows the following outputs for a "correct" tiny shell implementation:</p>
+<pre><code class="language-shell">$ python test.py 
+test case 01 passed
+test case 02 passed
+test case 03 passed
+test case 04 passed
+test case 05 passed
+test case 06 passed
+test case 07 passed
+test case 08 passed
+test case 09 passed
+test case 10 passed
+test case 11 passed
+test case 12 passed
+test case 13 passed
+test case 14 passed
+test case 15 passed
+test case 16 passed
+</code></pre>
+<p>If you don’t see something like <code>test case &lt;idx&gt; passed</code> in the outputs, your <code>tsh</code> implementation does not pass the corresponding test case. Under this case, you can compare your output with the reference output, fix your code accordingly, recompile it, and execute <code>python test.py --case &lt;idx&gt;</code> later to see if you have passed that specific test case. See the help message (<code>python test.py --help</code>) for more details.</p>
+<p>Your solution shell will be tested for correctness on a Linux machine, using the same shell driver and trace files that were included in your lab directory. Your shell should produce identical output on these traces as the reference shell, with only two exceptions:</p>
+<ul>
+<li>The PIDs can (and will) be different. </li>
+<li>The output of the <code>/bin/ps</code> commands in <code>trace11.txt</code>, <code>trace12.txt</code>, and <code>trace13.txt</code> will be different from run to run. However, the running states of any mysplit processes in the output of the <code>/bin/ps</code> command should be identical.</li>
+</ul>
+<h2 id="hand-in-instructions">Hand-In Instructions</h2>
+<p>We use GitHub Classroom to manage and organize labs. Follow these steps to submit your <code>tsh</code> implementation:</p>
+<ul>
+<li><strong>Join the GitHub Classroom</strong>: An invitation link has been shared in the course group chat, open the link to join the GitHub Classroom. You'll need to register a GitHub account if you don't have one. You should be able to see your student ID (e.g., <code>09Jxxxxx</code>) listed in the roaster, please carefully find your student ID and link your GitHub account with it.</li>
+<li><strong>Accept the assignment</strong>: After joining the Classroom, there will be a window asking you to accept the assignment. A private repository will be created for you once you accept the assignment.</li>
+<li><strong>Submit your work</strong>: Submit your <code>tsh.c</code> file to your repository with a commit. You can submit as many times as you want before the deadline. There are two ways to submit your work:<ul>
+<li><em>operate on the web page</em>: open your repository, click <code>tsh.c</code>, click the pencil icon in the upper right corner, copy-paste the content your local <code>tsh.c</code> file to the web page, click the green button labeled <code>Commit changes...</code>, and click the green button labeled with <code>Commit changes</code> in the pop-up window.</li>
+<li><em>use <code>git</code></em>: clone the repository with <code>git clone https://github.com/SEU-ICS/shell-lab-&lt;your id here&gt;.git</code>, copy your local <code>tsh.c</code> file to <code>shell-lab-&lt;your id here&gt;/tsh.c</code>, then commit the changes with <code>git add . &amp;&amp; git commit &amp;&amp; git push</code>.</li>
+</ul>
+</li>
+<li><strong>Grading</strong>: Our auto-grading tool will automatically evaluate your submissions every time you push a commit. Only you, teachers and TAs can view the score of your submission. The score of your final submission will serve as your grade for this lab.</li>
+</ul>
+<p><strong>NOTE</strong>:</p>
+<ol>
+<li>You will not be able to submit your work after the deadline. Manage your time properly.</li>
+<li>The online auto-grader runs slow and should only be used to obtain your final score. Use the provided scripts locally to debug and evaluate your <code>tsh</code>.</li>
+<li><strong>DO NOT</strong> modify <strong>ANYTHING</strong> under the <code>.github</code> directory of your repository. A script will examine your repositories for such behaviors after the deadline, and we will regrade your submission if you violate this rule.</li>
+</ol>
+<p>Further instructions, if any, will be announced in form of class group notifications.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

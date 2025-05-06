@@ -1,0 +1,772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../shell/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>MallocLab - ICS Lab Guidance</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#malloc-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ICS Lab Guidance" class="md-header__button md-logo" aria-label="ICS Lab Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ICS Lab Guidance
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MallocLab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ICS Lab Guidance" class="md-nav__button md-logo" aria-label="ICS Lab Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ICS Lab Guidance
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ShellLab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MallocLab
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    MallocLab
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Your Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-trace-driven-driver-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Trace-driven Driver Program
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Your Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hand-in-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hand-In Instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-your-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Your Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking Your Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-trace-driven-driver-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Trace-driven Driver Program
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correctness-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correctness Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Your Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programming Rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hand-in-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hand-In Instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="malloc-lab">Malloc Lab</h1>
+<blockquote>
+<p>Instructor: <em>Prof. Zhen Ling</em></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>In this lab, you will be writing a dynamic storage allocator for C programs -- that is, your own version of the <code>malloc</code>, <code>free</code>, <code>realloc</code>, and <code>calloc</code> functions. You are encouraged to explore the design space creatively and implement an allocator that is <em>correct</em>, <em>efficient</em>, and <em>fast</em>.</p>
+<p><strong><em>You are recommended to start by implementing an implicit list allocator. Subsequently, you can build on this foundation to implement other allocators (e.g., explicit list) to improve the performance of your heap allocator.</em></strong></p>
+<h2 id="environment-setup">Environment Setup</h2>
+<p>The code required for the malloc lab in hosted on the same GitHub repository in the <em>shell lab</em>. The following are the basic steps to setup your local experiment environment:</p>
+<ul>
+<li><strong>Get the code</strong>:<ul>
+<li><em>downloading through the web page</em>: Please refer to the <a href="../shell/">shell lab guidance</a>.</li>
+<li><em>using <code>git</code></em>: Execute <code>git pull</code> under the code directory if you downloaded the code using <code>git clone</code> in the previous <em>shell lab</em>. Otherwise, execute <code>git clone https://github.com/SEU-ICS/lab.git</code>.</li>
+</ul>
+</li>
+<li><strong>Enter the lab directory</strong>: change your working directory to <code>lab/malloc</code> (or <code>lab-main/malloc</code>)</li>
+</ul>
+<h2 id="task-description">Task Description</h2>
+<p>You will need to implement a dynamic storage allocator within <code>mm.c</code> by implementing the functions listed in Table-1. You may need to define other static helper functions used by the listed routines.</p>
+<center>
+<b>Table-1. Malloc Lab Functions to be Implemented</b>
+</center>
+
+<table>
+<thead>
+<tr>
+<th>Function Names</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int mm_init(void)</code></td>
+<td>The exposed API that performs any necessary initializations, such as allocating the initial heap area. The return value should be -1 if there was a problem in performing the initialization, 0 otherwise.<br> Note taht every time the driver executes a new trace, it resets your heap to the empty heap by calling your mm init function.</td>
+</tr>
+<tr>
+<td><code>void *malloc(size_t size)</code></td>
+<td>The exposed API that allocates memory chuncks. This routine returns a pointer to an allocated block payload of at least <code>size</code> bytes. The entire allocated block should lie within the heap region and should not overlap with any other allocated chunk.</td>
+</tr>
+<tr>
+<td><code>void free(void *ptr)</code></td>
+<td>The exposed API that frees allocated memory chunks. This routine frees the block pointed to by <code>ptr</code>. It returns nothing. This routine is only guaranteed to work when the passed pointer (i.e., <code>ptr</code>) was returned by an earlier call to <code>malloc</code>, <code>calloc</code>, or <code>realloc</code> and has not yet been freed. <code>free(NULL)</code> has no effect.</td>
+</tr>
+<tr>
+<td><code>void *find_fit(size_t asize)</code></td>
+<td>An internal function that locates a free memory chunk, used by <code>malloc()</code>. Find a block through all free blocks that meet the requirement of <code>asize</code>.</td>
+</tr>
+<tr>
+<td><code>void place(void *bp, size_t asize)</code></td>
+<td>An internal function that places the requested block in the new free block., used by <code>malloc()</code></td>
+</tr>
+<tr>
+<td><code>void *extend_heap(size_t words)</code></td>
+<td>An internal function that extends the heap by <code>words</code> words. It returns a pointer to the new free block on success, <code>NULL</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>void *coalesce(void *bp)</code></td>
+<td>An internal function that merges two adjacent free memory chunks and returns the merged block. We have handled the simple case where both the previous and the next chunks are allocated. You will need to implement other cases.</td>
+</tr>
+</tbody>
+</table>
+<p>We have already implemented some helper routines in <code>memlib.c</code> which you can use:</p>
+<ul>
+<li><code>void *mem_sbrk(int incr)</code>: Expands the heap by <code>incr</code> bytes, where <code>incr</code> is a positive non-zero integer, and returns a generic pointer to the first byte of the newly allocated heap area. The semantics are identical to the Unix <code>sbrk</code> function, except that <code>mem_sbrk</code>accepts only a positive non-zero integer argument.</li>
+<li><code>void *mem_heap_lo(void)</code>: Returns a generic pointer to the first byte in the heap.</li>
+<li><code>void *mem_heap_hi(void)</code>: Returns a generic pointer to the last byte in the heap.</li>
+<li><code>size t mem_heapsize(void)</code>: Returns the current size of the heap in bytes.</li>
+<li><code>size t mem_pagesize(void)</code>: Returns the system’s page size in bytes (4K on Linux systems).</li>
+</ul>
+<p>We have also provided the basic implementations of <code>calloc</code> and <code>realloc</code> in <code>mm.c</code>. <em>However, you may need to modify these routines to improve the performance of your implementation.</em></p>
+<h2 id="checking-your-work">Checking Your Work</h2>
+<h3 id="the-trace-driven-driver-program">The Trace-driven Driver Program</h3>
+<p>The driver program <code>mdriver</code> (compiled from <code>mdriver.c</code>) tests your <code>mm.c</code> implementation for correctness, space utilization, and throughput. The driver program is controlled by a set of <em>trace files</em> that are included in the <code>traces</code> folder. Each trace file contains a sequence of allocate and free operations that instruct the driver to call your <code>malloc</code> and <code>free</code> routines in some sequence. The driver and the trace files are the same ones we will use when we grade your handin <code>mm.c</code> file.</p>
+<p>When the driver program is run, it will run each trace file <em>12</em> times: once to make sure your implementation is correct, once to determine the space utilization, and <em>10</em> times to determine the performance.</p>
+<p>If you run <code>mdriver</code> with no command line arguments, it will test the correctness and performance of your <code>mm.c</code> implementation by default. It also accepts the following command line arguments, which you may find useful during the development.</p>
+<ul>
+<li>
+<p><code>-t &lt;tracedir&gt;</code>: Look for the default trace files in directory tracedir instead of the default directory defined in <code>config.h</code>.</p>
+</li>
+<li>
+<p><code>-f &lt;tracefile&gt;</code>: Use one particular tracefile instead of the default set of tracefiles for testing correctness and performance.</p>
+</li>
+<li>
+<p><code>-c &lt;tracefile&gt;</code>: Run a particular tracefile exactly once, testing only for correctness. This option is extremently useful if you want to print out debugging messages.</p>
+</li>
+<li>
+<p><code>-h</code>: Print a summary of the command line arguments.</p>
+</li>
+<li>
+<p><code>-l</code>: Run and measure libc malloc in addition to the student’s malloc package. This is interesting mainly to see how slow the libc malloc package is.</p>
+</li>
+<li>
+<p><code>-V</code>: Verbose output. Print additional diagnostic information as each trace file is processed. Useful during debugging for determining which trace file is causing your malloc package to fail.</p>
+</li>
+<li>
+<p><code>-v &lt;verbose level&gt;</code>: This optional feature lets you manually set your verbose level to a particular integer.</p>
+</li>
+<li>
+<p><code>-d &lt;i&gt;</code>: At debug level <code>0</code>, very little validity checking is done. This is useful if you are mostly done but just tweaking performance. At debug level <code>1</code>, every array the driver allocates is filled with random bits. When the array is freed or reallocated, we check to make sure the bits have not been changed. This is the default. At debug level <code>2</code>, every time any operation is done, all arrays are checked. This is very slow but useful to discover problems very quickly.</p>
+</li>
+<li>
+<p><code>-D</code>: Equivalent to <code>-d2</code>.</p>
+</li>
+<li>
+<p><code>-s</code>: Time out after s seconds. The default is to never time out.</p>
+</li>
+<li>
+<p><code>-P</code>: Only output perf score to <code>stdout</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p>Don't forget to execute <code>make -B</code> to compile your code. Some scripts listed below may re-compile your code with compiler flags that suppress debug outputs. Therefore it is recommended to execute <code>make -B</code> first before you want to play with <code>mdriver</code></p>
+</blockquote>
+<h3 id="correctness-check">Correctness Check</h3>
+<p>To check the correctness of your heap implementation on all trace files, execute:</p>
+<pre><code class="language-shell">./scripts/exhaustive-heap-check.sh
+</code></pre>
+<p>To check the correctness of your heap implementation on only one trace files, execute:</p>
+<pre><code class="language-shell">./mdriver -c ./traces/&lt;name&gt;.rep
+# e.g., ./mdriver -c ./traces/binary.rep
+</code></pre>
+<h3 id="performance-check">Performance Check</h3>
+<p>To check the performance of your heap implementation, execute:</p>
+<pre><code class="language-shell">./scripts/get-perf-index.sh
+</code></pre>
+<h3 id="debug-your-code">Debug Your Code</h3>
+<p>Run <code>mdriver</code> with the <code>-D -v 2</code> option to get full debug output. If you want to check the working condition of your heap allocator on-the-fly, try to output some debug information in the <code>bool mm_checkheap(int lineno)</code> function within <code>mm.c</code>. The argument and return value of this function are useless and you can just safely ignore them. When <code>mdriver</code> is executed with the <code>-D</code> option, it calls <code>mm_checkheap</code> everytime before it performs heap operations (e.g., <code>malloc</code>, and <code>free</code>). For example, you can walk the whole heap and print every memory chunks to see how your heap changes over time.</p>
+<h2 id="programming-rules">Programming Rules</h2>
+<ul>
+<li>You should not change any of the interfaces in <code>mm.h</code>. However, we strongly encourage you to use static helper functions in <code>mm.c</code> to break up your code into small, easy-to-understand segments.</li>
+<li>You should not invoke any external memory-management related library calls or system calls. The use of the libc <code>malloc</code>, <code>calloc</code>, <code>free</code>, <code>realloc</code>, <code>sbrk</code>, <code>brk</code>, or any other memory management packages is strictly prohibited.</li>
+<li>You are not allowed to define any global data structures such as arrays, structs, trees, or lists in your <code>mm.c</code> program. However, you <em>are</em> allowed to declare global scalar variables such as integers, floats, and pointers in <code>mm.c</code>.</li>
+</ul>
+<h2 id="grading">Grading</h2>
+<p>The grading of the final hand-in will be based on the <em>correctness</em> and <em>performance</em> of your allocator on the given traces, the quality of your heap checker, and your <em>coding style</em>:</p>
+<ul>
+<li><strong>Correctness (80 points)</strong>: we use <em>20</em> trace files as test cases for correctness, each test case counts for <em>4</em> points, and you will get a total of <em>80</em> points if you pass all tests. Use the correctness check script mentioned above to estimate your correctness score.</li>
+<li><strong>Performance (100 points)</strong>: Two metrics will be used to evaluate your solution. Use the performance check script to estimate your performance score.<ul>
+<li><em>Space utilization</em>: The peak ratio between the aggregate amount of memory used by the driver (i.e., allocated via <code>malloc</code> but not yet freed via <code>free</code>) and the size of the heap used by your allocator. The optimal ratio equals 1. You should find good policies to minimize fragmentation in order to make this ratio as close as possible to the optimal.</li>
+<li><em>Throughput</em>: The average number of operations completed per second.</li>
+</ul>
+</li>
+</ul>
+<p>Your final grade is calculated by the following formula. The valuation of the weighting parameters <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> depends on the overall performance of the class.</p>
+<div class="arithmatex">\[Grade = a \times CorrectnessScore + b \times PerformanceScore\]</div>
+<h2 id="hand-in-instructions">Hand-In Instructions</h2>
+<p>We use GitHub Classroom to manage and organize labs. Follow these steps to submit your <code>mm.c</code>:</p>
+<ul>
+<li><strong>Join the GitHub Classroom</strong>: You can safely jump to the next step if you have joined the classroom. Otherwise, an invitation link has been shared in the course group chat, open the link to join the GitHub Classroom. You'll need to register a GitHub account if you don't have one. You should be able to see your student ID (e.g., <code>09Jxxxxx</code>) listed in the roaster, please carefully find your student ID and link your GitHub account with it.</li>
+<li><strong>Accept the assignment</strong>: An invitation link has been shared in the course group chat, you will need to open the link to accept the assignment. A private repository will be created for you once you accept the assignment.</li>
+<li><strong>Submit your work</strong>: Submit your <code>mm.c</code> file to your repository with a commit. You can submit as many times as you want before the deadline. Please refer to the <a href="../shell/">shell lab guidance</a> for how to submit.</li>
+<li><strong>Grading</strong>: Our auto-grading tool will automatically evaluate your submissions every time you push a commit. Only you, teachers and TAs can view the score of your submission. The score that auto-grader reports is the sum of your correctness score and performance score (i.e., <span class="arithmatex">\(a=1, b=1\)</span>) and does not reflect your final grade. However, this score is guaranteed to positively correlates with your final grade -- higher score, higher final grade. We will use the score of your final submission to calculate your final grade for this lab.</li>
+</ul>
+<p><strong>NOTE</strong>:</p>
+<ol>
+<li>You will not be able to submit your work after the deadline. Manage your time properly.</li>
+<li>The online auto-grader runs slow and should only be used to obtain your final score. Use the provided scripts locally to debug and evaluate your <code>mm.c</code>.</li>
+<li>Any modifications to the <code>.github</code> directory of your repository is <strong>STRICTLY PROHIBITED</strong>.</li>
+<li>Code plagiarism is <strong>STRICTLY PROHIBITED AND PUNISHED</strong>.</li>
+</ol>
+<p>Further instructions, if any, will be announced in form of class group notifications.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
